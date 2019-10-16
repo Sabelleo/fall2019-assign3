@@ -31,20 +31,20 @@ template <typename E> void GenStack<E>::push(const E& e)
   }
 }
 
-template <typename E> E& GenStack<E>::pop() //throw(StackEmpty)
+template <typename E> E& GenStack<E>::pop()
 {
   if(isEmpty())
   {
-    cout << "Sorry, your stack is empty!" << endl; //replace with something else
+    cout << "Sorry, your stack is empty!" << endl;
   }
   return myArray[top--];
 }
 
-template <typename E> const E& GenStack<E>::peek() //const throw(StackEmpty)
+template <typename E> const E& GenStack<E>::peek()
 {
   if (isEmpty())
   {
-    cout << "Sorry, your stack is empty!" << endl; //replace with something else
+    cout << "Sorry, your stack is empty!" << endl;
   }
   return myArray[top];
 }

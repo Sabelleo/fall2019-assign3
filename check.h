@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 #include <stdlib.h>
-#include "GenStack.cpp"
+#include "GenStack.h"
 
 using namespace std;
 
@@ -18,9 +18,9 @@ class Check
     //method that gets initial file and runs other methods, asking for more files if the previous is okay.
     void getFile(string file);
 
-    // Used to store the sequence of symbols before we encounter an error
+    // Used to store sequence of symbols before we encounter an error
     string lastSequence;
-    // Used to store the status message
+    // Used to store status message
     string message;
 
     string m_choice;

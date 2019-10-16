@@ -62,7 +62,7 @@ void Check::addDelimiters(string file)
       string line_cleaned = "";
       for (int i = 0; i < line.size(); ++i) //go through each line in file
       {
-        char myChar = line[i]; //DOES THIS WORK TO CONVERT????
+        char myChar = line[i];
         switch(myChar) //add symbol to new string if delimiter
         {
           case '[':
@@ -118,7 +118,7 @@ void Check::addDelimiters(string file)
     //still need to find the line number that the error was on!!!
     fl.open(file);
     int lineNum = 0;
-    if (file.is_open())
+    if (fl.is_open())
     {
       while(getline(fl, line, '\n')) //loop through lines in file
       {
@@ -141,16 +141,15 @@ void Check::addDelimiters(string file)
 bool Check::matchCheck(string delimStr)
 {
   GenStack<char> delimStack(delimStr.size()); //create empty stack
-  for (int i = 0; i < delimStr.size(); ++i) //for loop through string, 0 through size-1
+  for (int i = 0; i < delimStr.size(); ++i) //loop through string
   {
-    // This prior sequence string will capture delimiters to help us locate errors
     lastSequence += delimStr.at(i);
     //if it's an opening symbol, push to stack
     if (delimStr.at(i) == '(' || delimStr.at(i) == '[' || delimStr.at(i) == '{')
     {
       delimStack.push(delimStr.at(i));
     }
-    //else if it's a closing grouping symbol then see if it matchs stack peek
+    //else if it's a closing grouping symbol then see if it matches peek
     else if (delimStr.at(i) == ')' || delimStr.at(i) == ']' || delimStr.at(i) == '}')
     {
       //if stack is empty, missing a delimiter and return false
