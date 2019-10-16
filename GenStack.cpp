@@ -5,21 +5,21 @@ using namespace std;
 
 template <typename E> GenStack<E>::GenStack() //default constructor
 {
-  myArray = new E[128];
+  myStack = new E[128];
   size = 128;
   top = -1;
 }
 
 template <typename E> GenStack<E>::GenStack(int maxSize) //overloaded constructor
 {
-  myArray = new E[maxSize];
+  myStack = new E[maxSize];
   size = maxSize;
   top = -1;
 }
 
 template <typename E> GenStack<E>::~GenStack() //destructor
 {
-  delete[] myArray;
+  delete[] myStack;
 }
 
 template <typename E> void GenStack<E>::push(const E& e)
@@ -27,7 +27,7 @@ template <typename E> void GenStack<E>::push(const E& e)
   if (isFull()) //double the stack size if full
   {
     doubleSize();
-    myArray[++top] = e;
+    myStack[++top] = e;
   }
 }
 
@@ -37,7 +37,7 @@ template <typename E> E& GenStack<E>::pop()
   {
     cout << "Sorry, your stack is empty!" << endl;
   }
-  return myArray[top--];
+  return myStack[top--];
 }
 
 template <typename E> const E& GenStack<E>::peek()
@@ -46,7 +46,7 @@ template <typename E> const E& GenStack<E>::peek()
   {
     cout << "Sorry, your stack is empty!" << endl;
   }
-  return myArray[top];
+  return myStack[top];
 }
 
 template <typename E> bool GenStack<E>::isFull()
@@ -61,14 +61,14 @@ template <typename E> bool GenStack<E>::isEmpty()
 
 template <typename E> void GenStack<E>::doubleSize()
 {
-  E* doubleArray = new E[size * 2];
+  E* doubleStack = new E[size * 2];
   for (int i = 0; i < size; i++)
   {
-    doubleArray[i] = myArray[i];
+    doubleStack[i] = myStack[i];
   }
-  delete[] myArray;
+  delete[] myStack;
   size = size*2;
-  myArray = new E[size];
-  myArray = doubleArray;
-  delete[] doubleArray;
+  myStack = new E[size];
+  myStack = doubleStack;
+  delete[] doubleStack;
 }
